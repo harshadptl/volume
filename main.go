@@ -14,7 +14,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	//Handling the /v1/flights/sort. The handler is a function here
-	mux.HandleFunc("/v1/flights/sort", handlers.FlightSortHandler)
+	mux.HandleFunc("/v1/flights/sort", handlers.FlightsSortHandler)
 
 	//Create the server.
 	s := &http.Server{
