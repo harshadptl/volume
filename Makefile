@@ -2,7 +2,10 @@
 #	Makefile for Volume assignment
 #
 
-all: build
+all: test build
 
 build:
 	go build -o bin/server
+
+test:
+	go test ./...

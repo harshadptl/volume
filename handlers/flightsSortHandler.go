@@ -17,6 +17,7 @@ type FlightsSortResponse struct {
 	Destination string `json:"dest"`
 	Error string `json:"err"`
 }
+
 // FlightsSortHandler implements the logic for handling Flights Sort request
 func FlightsSortHandler(res http.ResponseWriter, req *http.Request) {
 
