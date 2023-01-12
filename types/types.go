@@ -7,6 +7,7 @@ import (
 	"regexp"
 )
 
+// Pattern to verify Airport Code
 var pattern = regexp.MustCompile("^\"[A-Z]{3}\"$")
 
 //
@@ -14,7 +15,8 @@ var pattern = regexp.MustCompile("^\"[A-Z]{3}\"$")
 //
 type AirportCode string
 
-// While unmarshalling Airport code check if it is 3 character long surrounded by quotes
+// While unmarshalling Airport code check if it is 3 character long string
+// with surrounding double quotes. It returns an error if the format is wrong.
 func (d *AirportCode) UnmarshalJSON(data []byte) error {
 	if !pattern.Match(data) {
 		return ErrInvalidAirportCode
@@ -36,9 +38,13 @@ func (fl *Flight) Data() map[string]string {
 	}
 }
 
+//
 // FlightsData is an unordered list of flights in the itinerary of a person
+//
 type FlightsData []Flight
 
+// ParseFlightsData parses the request body for FlightsData object. It returns
+// an error if the format is wrong.
 func ParseFlightsData(r io.Reader) (*FlightsData, error) {
 	var f FlightsData
 	err := json.NewDecoder(r).Decode(&f)

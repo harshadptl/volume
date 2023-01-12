@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/harshadptl/volume_assignment/handlers"
 	"log"
 	"net/http"
+
+	"github.com/harshadptl/volume_assignment/handlers"
 )
 
 // PORT on which the http server listens
@@ -14,7 +15,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	//Handling the /v1/flights/sort. The handler is a function here
-	mux.HandleFunc("/v1/flights/sort", handlers.FlightsSortHandler)
+	mux.HandleFunc(`/v1/flights/sort`, handlers.FlightsSortHandler)
 
 	//Create the server.
 	s := &http.Server{
